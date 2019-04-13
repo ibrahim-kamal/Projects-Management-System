@@ -104,7 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\JDController.cs" />
     <Compile Include="Controllers\PMController.cs" />
+    <Compile Include="Controllers\TLController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,7 +178,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\JD\" />
     <Folder Include="Views\PM\" />
+    <Folder Include="Views\TL\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -39,6 +39,8 @@ namespace PMS.Models
         public virtual user user { get; set; }
         public virtual ICollection<request> requests { get; set; }
 
+
+        /*
         public void send_feedback(string projectId, String juniorId, String rate, String content, String TeamLeader_id)
         {
             String date = DateTime.Now.ToString("MM/dd/yyyy");
@@ -76,5 +78,6 @@ namespace PMS.Models
             }
             
         }
+        */
     }
 }
