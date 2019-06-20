@@ -1,0 +1,423 @@
+﻿@model IEnumerable < Project_Management_System.Models.post>
+
+@{
+    ViewBag.Title = "newHomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+
+<head>
+
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #FCF2E3;
+            font-family: 'Montserrat';
+            overflow-x: hidden;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizelegibility;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid {
+            overflow: auto;
+            will-change: transform, transform-origin;
+            transition: -webkit-transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform-origin 0.05s ease;
+            transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), transform-origin 0.05s ease;
+            transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), transform-origin 0.05s ease, -webkit-transform 0.55s cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform-origin 0.05s ease;
+        }
+
+        .grid__item {
+            position: relative;
+            float: left;
+            height: 33.333vh;
+            background: #f7f7f7;
+        }
+
+            .grid__item:hover .grid__title {
+                color: #A9A9A9;
+            }
+
+        .grid__item--4 {
+            width: 100%;
+        }
+
+
+        .grid__link {
+            will-change: opacity;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 3vh 3vw;
+            transition: all 0.75s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .grid__title {
+            font-size: 24px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.87);
+            text-transform: capitalize;
+            line-height: 1.3;
+        }
+
+        .grid p {
+            margin-top: 25px;
+            font-family: 'Georgia';
+            color: rgba(0, 0, 0, 0.54);
+            padding-bottom: 10px;
+            box-shadow: inset 0 -4px #A9A9A9;
+        }
+
+        .post {
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            min-height: 100vh;
+            visibility: hidden;
+            opacity: 0;
+            -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+            background: #f7f7f7;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transition: all 0.7s 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .post--active {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .post--hide {
+            transition: all 0.6s 0s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .post__wrapper {
+            max-width: 670px;
+            margin: 0 auto;
+            padding: 15vh 5vw;
+        }
+
+        .post__back, .post__forw {
+            position: absolute;
+            top: 3vh;
+            left: 2vw;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.7);
+            transition: color .2s ease-out;
+        }
+
+            .post__back > svg, .post__forw > svg {
+                fill: rgba(0, 0, 0, 0.7);
+                margin-right: 1vw;
+            }
+
+            .post__back:hover, .post__forw:hover {
+                color: #A9A9A9;
+            }
+
+                .post__back:hover > svg, .post__forw:hover > svg {
+                    fill: #A9A9A9;
+                }
+
+        .post__forw {
+            left: auto;
+            right: 2vw;
+        }
+
+            .post__forw > svg {
+                margin-right: 0;
+                margin-left: 1vw;
+            }
+
+        .post h3 {
+            margin: 0 0 25px 0;
+            font-family: 'Georgia';
+            color: rgba(0, 0, 0, 0.54);
+            padding-bottom: 10px;
+            box-shadow: inset 0 -4px #A9A9A9;
+        }
+
+        .post p {
+            font-size: 20px;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.87);
+            margin: 0 0 25px 0;
+            font-family: 'Georgia';
+        }
+
+        .post h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 25px;
+        }
+
+        .logo {
+            position: fixed;
+            bottom: 3vh;
+            right: 3vw;
+            z-index: 2;
+        }
+
+            .logo img {
+                width: 45px;
+                filter: invert(100%);
+                -webkit-filter: invert(100%);
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+                transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+
+                .logo img:hover {
+                    -webkit-transform: rotate(180deg) scale(1.1);
+                    transform: rotate(180deg) scale(1.1);
+                }
+    </style>
+</head>
+
+
+<body>
+
+    @if (Session["type_id"].ToString() == "5") //  customer -> add post
+    {<button style="background-color:aquamarine ;width:1286px;height:50px" class="gopage">Add Post</button>
+
+    }
+
+    @if (Session["type_id"].ToString() == "2")  //
+    {
+        <button style="background-color:aquamarine ;width:1286px;height:50px" class="gopage">Request Project</button>
+
+    }
+
+
+    <div>
+
+        <ul class="grid">
+            @foreach (var item in Model)
+            {
+                <li class="grid__item grid__item--4">
+                    <a href="" class="grid__link">
+                        <h2 class="grid__title">@item.title</h2>
+                        <p>Posted by @item.user.fname</p>
+                    </a>
+                </li>
+            }
+        </ul>
+        @foreach (var item in Model)
+        {
+            <section class="post">
+                <article class="post__wrapper">
+                    <h1>@item.title</h1>
+                    <h3>Posted by @item.user.fname</h3>
+                    <p>@item.description</p>
+                </article>
+                <a href="" class="post__back">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M4 11h5v-6h-5v6zm0 7h5v-6h-5v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5v-6h-5v6zm6-6v6h5v-6h-5z" />
+                        <path d="M0 0h24v24h-24z" fill="none" />
+                    </svg> Back to posts
+                </a>
+                <a href="" class="post__forw">
+                    Next post<svg width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24h-24z" fill="none" /><path d="M12 4l-1.41 1.41 5.58 5.59h-12.17v2h12.17l-5.58 5.59 1.41 1.41 8-8z" /></svg>
+                </a>
+            </section>}
+
+        <!-- Ettrics -->
+        <a href="http://ettrics.com/code/zooming-grid-layout/" class="logo" target="_blank">
+            <img class="logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/ettrics-logo.svg" alt="" />
+        </a>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script>
+
+
+        $(function () {
+            $(window).scroll(function () {
+                var winTop = $(window).scrollTop();
+                if (winTop >= 30) {
+                    $("body").addClass("sticky-header");
+                } else {
+                    $("body").removeClass("sticky-header");
+                }
+            })
+        })
+
+        var ZoomGrid = (function () {
+            var w = $(window);
+            var grid = $('.grid');
+            var item = $('.grid__item');
+            var itemContent = item.find('.grid__link');
+            var post = $('.post');
+            var backBtn = post.find('.post__back');
+            var nextBtn = post.find('.post__forw');
+            var breakpoint = 700;
+            var isBig = false;
+
+            var zoom = function (event) {
+                var content = $(this).find('.grid__link');
+                var self = $(this);
+                var index = self.index();
+                var vw = w.innerWidth();
+                var vh = w.innerHeight();
+                var ds = $(document).scrollTop();
+                var px = event.pageX;
+                var py = event.pageY;
+
+                // scale stuff
+                var iw = $(this).innerWidth();
+                var ih = $(this).innerHeight();
+                var sx = vw / iw;
+                var sy = vh / ih;
+
+                // transform-origin stuff
+                var o = $(this).offset();
+                var xc = vw / 2;
+                var yc = ds + vh / 2;
+
+                var dsp = ds / (vh + ds) * 100;
+
+                tox = px / vw * 100;
+                toy = py / vh * 100;
+                toy = toy - dsp;
+
+                if (!isBig && vw >= breakpoint) {
+                    grid.css({
+                        'transform-origin': tox + '% ' + toy + '%'
+                    });
+
+                    setTimeout(function () {
+                        requestAnimationFrame(function () {
+                            grid.css({
+                                'transform-origin': tox + '% ' + toy + '%',
+                                'transform': 'scale(' + sx + ',' + sy + ')'
+                            });
+                            itemContent.css({ 'opacity': '0' });
+                            $('body').css('overflow', 'hidden');
+                            showPost(index); // show post function
+                            isBig = true;
+                        });
+
+                    }, 50);
+
+
+                } else {
+                    // this stuff happens at the breakpoint/smaller screens
+
+                    itemContent.css({
+                        'opacity': '0'
+                    });
+                    showPost(index);
+                    isBig = true;
+                }
+                return false;
+            };
+
+            var zoomout = function () {
+                // reset grid back to normal/hide post
+                if (isBig) {
+                    post.addClass('post--hide');
+                    post.removeClass('post--active');
+                    post.on('transitionend', function () {
+                        grid.css({
+                            'transform': 'scale(1)'
+                        });
+                        itemContent.css({ 'opacity': '1' });
+                        $('body').removeAttr('style');
+                        post.off('transitionend');
+                    });
+
+                    isBig = false;
+                }
+                return false;
+            };
+
+            var showPost = function (index) {
+                post.eq(index).removeClass('post--hide').addClass('post--active');
+            };
+
+            var nextPost = function () {
+                var cur = $('.post--active');
+                var next = cur.next('.post');
+                if (!next.length) {
+                    next = post.first();
+                }
+                cur.addClass('post--hide').removeClass('post--active');
+                next.removeClass('post--hide').addClass('post--active');
+                return false;
+            };
+
+            var bindActions = function () {
+                item.on('click', zoom);
+                backBtn.on('click', zoomout);
+                nextBtn.on('click', nextPost);
+            };
+
+            var init = function () {
+                bindActions();
+            };
+
+            return {
+                init: init
+            };
+
+        }());
+
+        ZoomGrid.init();
+    </script>
+
+
+    @if (Session["type_id"].ToString() == "5") //  customer -> add post
+    {
+        <script>
+            $(".gopage").click(function () { location.replace("http://" + location.host + "/Customers/AddPost") })
+        </script>
+    }
+
+    @if (Session["type_id"].ToString() == "2")  //
+    {
+        <script>
+            $(".gopage").click(function () { location.replace("http://" + location.host + "/Project/requestProject") })
+        </script>
+    }
+</body>
+
+
+</html>
+
+

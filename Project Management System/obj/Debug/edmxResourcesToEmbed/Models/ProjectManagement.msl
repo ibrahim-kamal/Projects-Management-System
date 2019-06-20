@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Project_ManagementEntities">
+    <EntitySetMapping Name="comments">
+      <EntityTypeMapping TypeName="Model.comment">
+        <MappingFragment StoreEntitySet="comment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="feedbacks">
+      <EntityTypeMapping TypeName="Model.feedback">
+        <MappingFragment StoreEntitySet="feedback">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="PM_id" ColumnName="PM_id" />
+          <ScalarProperty Name="TL_id" ColumnName="TL_id" />
+          <ScalarProperty Name="JD_id" ColumnName="JD_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JDs">
+      <EntityTypeMapping TypeName="Model.JD">
+        <MappingFragment StoreEntitySet="JDs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="coding_skills" ColumnName="coding_skills" />
+          <ScalarProperty Name="system_design" ColumnName="system_design" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PMS">
+      <EntityTypeMapping TypeName="Model.PM">
+        <MappingFragment StoreEntitySet="PMS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="analytical" ColumnName="analytical" />
+          <ScalarProperty Name="highly_organized" ColumnName="highly_organized" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="posts">
+      <EntityTypeMapping TypeName="Model.post">
+        <MappingFragment StoreEntitySet="post">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projects">
+      <EntityTypeMapping TypeName="Model.project">
+        <MappingFragment StoreEntitySet="project">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="project_remove" ColumnName="project_remove" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requests">
+      <EntityTypeMapping TypeName="Model.request">
+        <MappingFragment StoreEntitySet="request">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="PM_id" ColumnName="PM_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="request_state" ColumnName="request_state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requestProjects">
+      <EntityTypeMapping TypeName="Model.requestProject">
+        <MappingFragment StoreEntitySet="requestProject">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="PMs_id" ColumnName="PMs_id" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teams">
+      <EntityTypeMapping TypeName="Model.team">
+        <MappingFragment StoreEntitySet="team">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="user_state" ColumnName="user_state" />
+          <ScalarProperty Name="user_remove" ColumnName="user_remove" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TLs">
+      <EntityTypeMapping TypeName="Model.TL">
+        <MappingFragment StoreEntitySet="TLs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="decision_making" ColumnName="decision_making" />
+          <ScalarProperty Name="excellent_communication" ColumnName="excellent_communication" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="types">
+      <EntityTypeMapping TypeName="Model.type">
+        <MappingFragment StoreEntitySet="type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="Model.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="job" ColumnName="job" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

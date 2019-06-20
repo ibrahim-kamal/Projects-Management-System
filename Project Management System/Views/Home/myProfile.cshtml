@@ -1,0 +1,40 @@
+﻿@model Project_Management_System.Models.user
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Portfolio Card</title>
+    <link rel="stylesheet" href="~/Content/css/myProfile.css">
+</head>
+
+<body>
+    <div class="portfoliocard" style="height:700px ; width:600px">
+        <div class="coverphoto" ; ></div>
+        <div class="profile_picture" ></div>
+        <div class="left_col">
+            <div class="preview img-wrapper" ; style="width: 150px; height: 150px; background-image:url('business-3152586_1920.jpg');position: absolute;top: 100px;left: 15px;border-radius: 100%;background-size: 100% 100%;padding: 7px;border: 4px solid rgba(255,255,255,1) display: block;margin: 20px auto;box-shadow: 0px 0px 0px 2px rgba(33, 122, 105, 1);border-radius: 50%;overflow: hidden;">
+                <img src="~/Content/css/mount-fuji-highest-mountain-in-japan-osx-lion-wallpaper.jpg" />
+            </div>
+        </div>
+        <div class="right_col">
+            <h2 class="name">@Html.DisplayFor(model => model.fname)</h2>
+            <h3 class="location">@Html.DisplayFor(model => model.lname)</h3>
+            <ul class="contact_information">
+                <li class="work">@Html.DisplayFor(model => model.job)</li>
+                <li class="mail">@Html.DisplayFor(model => model.email)</li>
+                <li class="phone">@Html.DisplayFor(model => model.mobile)</li>
+            </ul>
+            <a href="/Home/HomePage">My Project</a>
+        </div>
+    </div>
+ <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</body>
+</html>

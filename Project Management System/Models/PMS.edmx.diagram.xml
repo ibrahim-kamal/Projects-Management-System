@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1220635cf4f7487a8a38a5991f32527c" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.comment" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.feedback" Width="1.5" PointX="10.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.JD" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PM" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.post" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.project" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.request" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.requestProject" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.team" Width="1.5" PointX="7.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TL" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.type" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_comment_project" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_comment_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_feedback_JDs" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_feedback_PMS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_feedback_project" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_feedback_TLs" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_JDs_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PMS_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_request_PMS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_requestProject_PMS1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_post_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_requestProject_post1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_request_project" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_team_project" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_request_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_team_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TLs_user" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_user_type" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

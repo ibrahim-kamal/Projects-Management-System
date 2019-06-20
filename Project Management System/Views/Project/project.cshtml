@@ -1,0 +1,824 @@
+﻿@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<link rel='stylesheet' href='~/Content/bootstrap.css'>
+	<link rel='stylesheet' href='~/Content/bootstrap.min.css'>
+	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+	<link rel="stylesheet" href="~/Content/css/style.css">
+
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="~/Content/projectStyle/style.css">
+	<style>
+		.btn {
+			width: 100px;
+		}
+
+		.div_left {
+			float: left;
+		}
+
+		.div_right {
+			float: right;
+			margin-right: 50px;
+			margin-top: 70px;
+		}
+
+		.mybtn {
+			width: 300px;
+			font-size: 24px;
+			font-weight: 500;
+			padding: 10px;
+			display: block;
+			margin: auto;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.Project_comment {
+			width:800px;
+		}
+
+		.comment-form {
+			margin-left: 60px;
+			width: 80%;
+		}
+
+			.comment-form .form .input {
+				background-color: #fcfcfc;
+				border: none;
+				border-radius: 4px;
+				box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+				color: #555f77;
+				font-family: inherit;
+				font-size: 14px;
+				padding: 5px 10px;
+				outline: none;
+				width: 100%;
+				-webkit-transition: 350ms box-shadow;
+				-moz-transition: 350ms box-shadow;
+				-ms-transition: 350ms box-shadow;
+				-o-transition: 350ms box-shadow;
+				transition: 350ms box-shadow;
+			}
+
+		.post__wrapper, .comments-app {
+			margin: 0;
+		}
+
+		.comments-container {
+			margin: 0;
+			margin: -50px 80px;
+		}
+
+		.comment-form, .comment {
+			margin-bottom: 20px;
+			position: relative;
+			z-index: 0;
+		}
+
+			.comment-form .comment-avatar, .comment .comment-avatar {
+				/*border: 2px solid #fff;
+			border-radius: 50%;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, .2);*/
+				height: 80px;
+				left: 0;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				width: 80px;
+			}
+
+			.comment-form .form {
+				margin-left: 100px;
+			}
+
+		textarea.input {
+			height: 100px;
+			padding: 15px;
+		}
+
+		.comment-form .form input[type=submit] {
+			background-color: #555f77;
+			border: none;
+			border-radius: 4px;
+			box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+			color: #fff;
+			cursor: pointer;
+			display: block;
+			margin-left: auto;
+			outline: none;
+			padding: 6px 15px;
+			-webkit-transition: 350ms box-shadow;
+			-moz-transition: 350ms box-shadow;
+			-ms-transition: 350ms box-shadow;
+			-o-transition: 350ms box-shadow;
+			transition: 350ms box-shadow;
+		}
+
+		.comment-avatar {
+			width: 65px;
+			height: 65px;
+			position: relative;
+			z-index: 99;
+			float: left;
+			border: 3px solid #FFF;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+			overflow: hidden;
+		}
+
+		li {
+			list-style-type: none;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		#member {
+			margin-left: 10px;
+		}
+
+		.feedback {
+			float: right;
+			margin-right: 4px;
+			cursor: pointer;
+			color: #00F;
+			font-size: 22px;
+		}
+
+		#root {
+			margin-top: 20px;
+		}
+
+		.clear {
+			clear: both;
+		}
+	</style>
+
+</head>
+<body>
+	<header class="header" style="font-size:large">
+		<div class="container">
+			<h1 class="logo">CS</h1>
+			<ul class="nav" style="margin-top:15px">
+				<li><a href="~/Home/HomePage" style="margin-left:10px;">Home</a></li>
+				<li><a href="~/Home/myProfile" style="margin-left:10px;">Profile</a></li>
+				<li><a href="~/Home/EditMyProfile" style="margin-left:10px;">Edit</a></li>
+				<li><a href="~/Post/showPosts" style="margin-left:10px;">Posts</a></li>
+				<li><a href="~/Requests/showRequests" style="margin-left:10px;">Requests</a></li>
+				<li><a href="#" style="margin-left:10px;">About Us</a></li>
+				<li><a href="#" style="margin-left:10px;">Contact Us</a></li>
+				<li><a href="#" style="margin-left:300px;margin-right:0px">Logout</a></li>
+
+			</ul>
+		</div>
+	</header>
+	<div class="banner"> Project Management System</div>
+	<div class="div_left" style="width: 700px;">
+		<div class="Project_post">
+			<section class="post post--active">
+				<article class="post__wrapper">
+					<h1>@ViewBag.title</h1>
+					<h3>@ViewBag.customername</h3>
+					<p>@ViewBag.description</p>
+				</article>
+			</section>
+		</div>
+		<div class="Project_comment">
+			<!--<div class="comment-form">
+
+				<div class="comment-avatar">
+					<img src="http://lorempixel.com/200/200/people" width="80" height="80">
+				</div>
+				<form class="form ng-pristine ng-invalid ng-invalid-required ng-valid-email" name="form" ng-submit="form.$valid &amp;&amp; cmntCtrl.addComment()" novalidate="">
+					<div class="form-row">
+						<textarea class="input ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="cmntCtrl.comment.text" placeholder="Add comment..." required=""></textarea>
+					</div>
+					<div class="form-row">
+						<input type="submit" value="Add Comment">
+					</div>
+				</form>
+			</div>-->
+			@if (ViewBag.type == "2" & ViewBag.showcomment)
+			{
+				<div class="comment-form">
+
+					<div class="comment-avatar">
+						<img src="@ViewBag.user_photo" width="80" height="80">
+					</div>
+					<form class="form ng-pristine ng-invalid ng-invalid-required ng-valid-email" name="form" ng-submit="form.$valid &amp;&amp; cmntCtrl.addComment()" novalidate="">
+						<div class="form-row">
+							<textarea class="input ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="cmntCtrl.comment.text" placeholder="Add comment..." required=""></textarea>
+						</div>
+						<div class="form-row">
+							<input type="submit" value="Add Comment" class="Add_comment">
+						</div>
+					</form>
+				</div>
+			}
+			<!-- Contenedor Principal -->
+			@if (ViewBag.showcomment)
+			{
+				<div class="comments-container" style="margin-top: 60px;">
+
+					<ul id="comments-list" class="comments-list">
+						@for (int i = 0; i < ViewBag.comment_count; i++)
+						{
+							<li>
+								<div class="comment-main-level">
+									<!-- Avatar -->
+									<div class="comment-avatar"><img src='@(ViewBag.data["comment_photo"][i])' alt="" width="80" height="80"></div>
+									<!-- Contenedor del Comentario -->
+									<div class="comment-box" style="width:600px">
+										<div class="comment-head">
+											<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">@ViewBag.customername</a></h6>
+											<span>hace 20 minutos</span>
+											<!--<i class="fa fa-reply"></i>
+											<i class="fa fa-heart"></i>-->
+										</div>
+										<div class="comment-content">
+											@ViewBag.data["comment_text"][i]
+										</div>
+									</div>
+								</div>
+							</li>
+						}
+
+					</ul>
+				</div>
+			}
+		</div>
+	</div>
+
+	<div class="div_right" style="width: 400px;">
+		@if (ViewBag.type != "1" & ViewBag.showcomment & (ViewBag.user_remove != 2 & ViewBag.user_remove != 1))
+		{
+			<button type="button" class="mybtn leave btn btn-danger">Leave</button>
+		}
+		@if (ViewBag.type == "4" & ViewBag.showcomment)
+		{
+			<button type="button" class="mybtn show_feed btn btn-success">Show My feedback</button>
+		}
+		@if (ViewBag.type == "2" & ViewBag.showcomment)
+		{
+			<!-- Default input -->
+			<label for="exampleForm2">Project URL</label>
+			<input type="text" id="exampleForm2" class="project_url form-control">
+			<button type="button" class="mybtn delever_project btn btn-success">Deliver</button>
+		}
+		@if (ViewBag.type == "4" & ViewBag.showcomment & ViewBag.user_state != 0)
+		{
+			<button type="button" class="Accept_Join btn-success">Accept Join</button>
+			<button type="button" class="Refuse_Join btn btn-danger">Refuse Join</button>
+		}
+		<div id="root">
+			<div class="add-people">
+				<header>team</header>
+
+				@for (int j = 0; j < ViewBag.member_count; j++)
+				{
+					<li>
+						<div id="member">
+							<img src="https://d3j2s6hdd6a7rg.cloudfront.net/v2/uploads/media/default/0001/80/thumb_79963_default_news_size_5.jpeg" alt="" class="user-image">
+							<span class="user-name">@ViewBag.data["member_name"][j]</span>
+							@if (Convert.ToString(ViewBag.user_ID) == ViewBag.data["member_id"][j])
+							{
+								<div style="margin: auto"></div>
+							}
+							else if (ViewBag.type == "2" & ViewBag.showcomment & ViewBag.data["member_remove"][j] == "1")
+							{
+								<div style="margin: auto">
+									<button type="button" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") class="btn Pm_leave btn-danger">Leave</button>
+									<button type="button" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") class="btn Pm_Refuse btn-success">Refuse</button>
+								</div>
+							}
+							else if (ViewBag.type == "2" & ViewBag.showcomment & ViewBag.data["member_remove"][j] == "2")
+							{
+								<div style="margin: auto">
+									<button type="button" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") class="btn Pm_Fire btn-danger">Fire</button>
+									<button type="button" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") class="btn Pm_Refuse_Fire btn-success">Refuse</button>
+								</div>
+							}
+							else if (ViewBag.type == "2" & ViewBag.showcomment & ViewBag.data["member_state"][j] == "0")
+							{
+								<div style="margin: auto">
+									<button type="button" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") class="btn Pm_Remove btn-danger">Remove</button>
+								</div>
+							}
+							else if (ViewBag.type == "3" & ViewBag.showcomment & ViewBag.data["member_state"][j] == "0" & @ViewBag.data["member_type_id"][j] == "4")
+							{
+								<div style="margin: auto">
+									<button type="button" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") class="btn TL_Remove btn-danger">Remove</button>
+								</div>
+							}
+							else if (ViewBag.type == "2" & ViewBag.showcomment & ViewBag.data["member_state"][j] == "1")
+							{
+								<div style="margin: auto">
+									waiting
+								</div>
+							}
+							@if ((ViewBag.type == "3" | ViewBag.type == "2") & ViewBag.data["member_type_id"][j] == "4")
+							{
+								<div class="feedback">
+									<i class="fas show_feed_back_pm_TL fa-info-circle" @("data-id = '" + @ViewBag.data["member_id"][j] + "'") title="show feedback"></i>
+								</div>
+							}
+						</div>
+					</li>
+				}
+				<!--</ul>-->
+			</div>
+		</div>
+		@if (ViewBag.type == "2" & ViewBag.showcomment)
+		{
+
+			<div id="root">
+				<div class="add-people">
+					<header>search team Leader</header>
+					<ul id="all-members">
+						@for (int l = 0; l < ViewBag.teamleader_count; l++)
+						{
+							<li style="float: left;">
+								<div id="member">
+									<img src="@ViewBag.data["teamleader_photo"][l]" alt="" class="user-image">
+									<span class="user-name">@ViewBag.data["teamleader_name"][l]</span>
+									<div style="margin-left: 60px;">
+										<button type="button" data-id="@ViewBag.data["teamlaeder_id"][l]" class="btn teamleader_join btn-success">Join</button>
+									</div>
+								</div>
+							</li>
+						}
+					</ul>
+				</div>
+			</div>
+
+		}
+		@if ((ViewBag.type == "2" | ViewBag.type == "3") & ViewBag.showcomment)
+		{
+
+			<div id="root">
+				<div class="add-people">
+					<header>search Junior Developer</header>
+					<ul id="all-members">
+						@for (int k = 0; k < ViewBag.jounior_count; k++)
+						{
+							<li style="float: left;">
+								<div id="member">
+									<img src="@ViewBag.data["jounior_photo"][k]" alt="" class="user-image">
+									<span class="user-name">@ViewBag.data["jounior_name"][k]</span>
+									<div style="margin-left: 60px;">
+										<button type="button" data-id="@ViewBag.data["jounior_id"][k]" class="btn Jounior_join btn-success">Join</button>
+									</div>
+								</div>
+							</li>
+						}
+					</ul>
+				</div>
+			</div>
+
+		}
+
+	</div>
+	</div>
+	<div class="clear"></div>
+
+	<footer class="footer" style="margin-top: 70px;>
+		<div class="container">
+			<ul class="nav">
+				<li><a href="#fake">Home</a> </li>
+				<li>|</li>
+				<li><a href="#fake">Tickets</a> </li>
+				<li>|</li>
+				<li><a href="#fake">Recent Action </a> </li>
+				<li>|</li>
+				<li><a href="#fake">About  </a> </li>
+				<li>|</li>
+				<li><a href="#fake">contact us</a> </li>
+			</ul>
+		</div>
+		<p class="copy"> Copy rights </p>
+	</footer>
+
+
+
+
+
+	@if (ViewBag.type == "2" & ViewBag.showcomment)
+	{
+		<script>
+		$('.Add_comment').click(function (e) {
+			e.preventDefault();
+			var text = $('textarea').val();
+			var link = "http://"+location.host+"/ProjectManger/AddComment/@ViewBag.project_id/@ViewBag.user_ID/"+text;
+			$.ajax({
+
+				url: link,
+
+				type: "POST",
+
+				data: {},
+
+				success: function () {
+					location.reload();
+				}
+
+			});
+		});
+		</script>
+	}
+	@if (ViewBag.type == "2" & ViewBag.showcomment)
+	{
+		<script>
+		$('.leave').click(function (e) {
+			e.preventDefault();
+			var link = "~/ProjectManger/AddComment/@ViewBag.user_ID/@ViewBag.project_id";
+			$.ajax({
+
+				url: link,
+
+				type: "POST",
+
+				data: {},
+
+				success: function (page) {
+					Location.replace("http://" + location.host +"/Home/home/");
+				}
+
+			});
+		});
+		</script>
+	}
+
+	@if ((ViewBag.type == "4") & ViewBag.showcomment)
+	{
+		<script>
+		$('.leave').click(function (e) {
+			e.preventDefault();
+			@*var link = "~/ProjectManger/leaveProject/@ViewBag.user_ID/@ViewBag.project_id";*@
+			$.ajax({
+
+				url: link,
+
+				type: "POST",
+
+				data: {},
+
+				success: function (page) {
+					location.reload();
+				}
+
+			});
+		});
+		</script>
+	}
+
+
+
+	@if ((ViewBag.type == "2" | ViewBag.type == "3") & ViewBag.showcomment)
+	{
+		<script>
+		$('.Accept_Join').click(function (e) {
+			e.preventDefault();
+			var text = $('textarea').val();
+			var link = "http://" + location.host +"/TeamLeaderController/Approve/@ViewBag.user_ID/@ViewBag.project_id";
+			$.ajax({
+
+				url: link,
+
+				type: "POST",
+
+				data: {},
+
+				success: function (page) {
+					location.reload();
+				}
+
+			});
+		});
+		</script>
+	}
+
+
+
+
+
+	@if ((ViewBag.type == "2" | ViewBag.type == "3") & ViewBag.showcomment)
+	{
+		<script>
+		$('.Refuse_Join').click(function (e) {
+			e.preventDefault();
+			var text = $('textarea').val();
+			var link = "http://" + location.host + "/TeamLeaderController/Disapprove/@ViewBag.user_ID/@ViewBag.project_id";
+			$.ajax({
+
+				url: link,
+
+				type: "POST",
+
+				data: {},
+
+				success: function (page) {
+
+				}
+
+			});
+		});
+		</script>
+	}
+
+
+
+
+
+
+
+
+
+
+	<!--change now-->
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.Pm_Refuse').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/ProjectManager/DisapproveLeaving/@ViewBag.project_id/" + user_id;
+				$.ajax({
+
+					url: link,
+
+					type: "POST",
+
+					data: {},
+
+					success: function (page) {
+						location.reload();
+					}
+
+				});
+			});
+		</script>
+	}
+
+
+	<!--change now-->
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.Pm_Refuse_Fire').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/ProjectManager/DisapproveLeaving/@ViewBag.project_id/" + user_id;
+				$.ajax({
+
+					url: link,
+
+					type: "POST",
+
+					data: {},
+
+					success: function (page) {
+						location.reload();
+					}
+
+				});
+			});
+		</script>
+	}
+
+
+
+	<!--change now-->
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.Pm_Fire').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/ProjectManager/ApproveLeaving/@ViewBag.project_id/" + user_id;
+				$.ajax({
+
+					url: link,
+
+					type: "POST",
+
+					data: {},
+
+					success: function (page) {
+						location.reload();
+					}
+
+				});
+			});
+		</script>
+	}
+
+
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.Pm_leave').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/ProjectManager/ApproveLeaving/@ViewBag.project_id/" + user_id;
+				$.ajax({
+
+					url: link,
+
+					type: "POST",
+
+					data: {},
+
+					success: function (page) {
+						location.reload();
+					}
+
+				});
+			});
+		</script>
+	}
+
+
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.Pm_Remove').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/ProjectManager/ApproveLeaving/@ViewBag.project_id/" + user_id;
+				$.ajax({
+
+					url: link,
+
+					type: "POST",
+
+					data: {},
+
+					success: function (page) {
+						location.reload();
+					}
+
+				});
+			});
+		</script>
+	}
+
+
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.show_feed_back_pm_TL').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/staff/showFeedback/" + user_id;
+				location.replace(link);
+			});
+		</script>
+	}
+
+
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+			$('.show_feed_back_pm_TL').click(function (e) {
+				e.preventDefault();
+				var text = $('textarea').val();
+				user_id = $(this).attr('data-id').split('\'')[1]
+				console.log(user_id);
+				var link = "http://" + location.host + "/staff/showFeedback/" + user_id;
+				location.replace(link);
+			});
+		</script>
+	}
+
+
+	<script>
+		$('.TL_Remove').click(function (e) {
+			e.preventDefault();
+			var text = $('textarea').val();
+			var link = "~/ProjectManger/AddComment/@ViewBag.project_id /@ViewBag.user_ID/" + text
+			$.ajax({
+
+				url: link,
+
+				type: "POST",
+
+				data: {},
+
+				success: function (page) {
+
+				}
+
+			});
+		});
+	</script>
+
+	<!--change now-->
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+$('.delever_project ').click(function (e) {
+e.preventDefault();
+var url = $('#exampleForm2').val();
+var link = "http://" + location.host + "/ProjectManager/DisapproveLeaving/@ViewBag.project_id/" + user_id;
+$.ajax({
+
+url: "http://localhost:54235/ProjectManger/delivery",
+
+type: "POST",
+
+data: { url: url, project_id: @ViewBag.project_id },
+
+success: function (text) {
+//	console.log(text)
+}
+});
+		</script>
+	}
+
+
+	<!--change now-->
+	@if ((ViewBag.type == "3") & ViewBag.showcomment)
+	{
+		<script>
+$('.leave').click(function (e) {
+e.preventDefault();
+var text = $('textarea').val();
+user_id = $(this).attr('data-id').split('\'')[1]
+console.log(user_id);
+var link = "http://" + location.host + "/staff/leaveProject/" + @ViewBag.user_ID.+"/@ViewBag.project_id";
+$.ajax({
+
+url: link,
+
+type: "POST",
+
+data: {},
+
+success: function (page) {
+location.reload();
+}
+
+});
+});
+		</script>
+	}
+
+
+
+	<!--change now-->
+	@if ((ViewBag.type == "2") & ViewBag.showcomment)
+	{
+		<script>
+		$('.teamleader_join').click(function (e) {
+		e.preventDefault();
+		var text = $('textarea').val();
+		user_id = $(this).attr('data-id').split('\'')[1]
+		console.log(user_id);
+			ProjectManger / sendRequestForJoining /  / { projectid }
+		var link = "http://" + location.host + "/staff/leaveProject/"+user_id+"/@ViewBag.project_id";
+		$.ajax({
+
+		url: link,
+
+		type: "POST",
+
+		data: {},
+
+		success: function (page) {
+		location.reload();
+		}
+
+		});
+		});
+		</script>
+	}
+</body>
+</html>

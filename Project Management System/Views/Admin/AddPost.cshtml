@@ -1,0 +1,58 @@
+﻿@model Project_Management_System.Models.post
+
+@{
+    ViewBag.Title = "AddPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>#DailyUI028 Contact Form</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/css/addPost.css">
+</head>
+<body>
+    @using (Html.BeginForm("AddPost", "Admin", FormMethod.Post, new {  @class="value12" , enctype = "multipart/form-data" }))
+    {
+
+    
+
+            <h2 class="value13">ADD POST</h2>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <p class="value15" type="Title:">
+
+
+                        @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "value14", placeholder = "Title is .." } })
+                        @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p class="value15" type="Describtion:">
+
+                        @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "value14", placeholder = "What would you like to tell us.." } })
+                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="value16" />
+                </div>
+            </div>
+
+            <div class="value17">
+                <span class="value18 fa fa-envelope-o"></span> ProjectManagement@company.com
+            </div>
+}
+</body>
+</html>

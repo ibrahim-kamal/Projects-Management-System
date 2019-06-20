@@ -1,0 +1,52 @@
+@font-face {
+    src: url(LobsterTwo-Regular.ttf);
+    font-family: Lop;
+}
+@font-face {
+    src: url(Nosifer-Regular.ttf);
+    font-family: fon;
+}
+.addView .container .formContainer {
+    font-family: fon;
+    font-size: 30px;
+    line-height: 62px;
+}
+.addView .formContainer input[type=text],
+.addView .formContainer input[type=password],
+.addView .formContainer input[type=email],
+.addView .formContainer input[type=date],
+.addView .formContainer input[type=number],
+.addView .formContainer input[type=file],
+.addView .formContainer select {
+    color: #FF0144;
+    margin: 0px;
+    height: 45px;
+    font-size: 18px;
+}
+.addView .container .h1 {
+    font-family: fon;
+}
+
+ input[type=submit] {
+        width: 30%;
+        text-align:center;
+        color: #181A1c;
+        border: 0;
+        font-size: 22px;
+        border-radius: 5px;
+        margin-bottom : 50px;
+        padding: 15px;
+    }
+
+.addView .formContainer {
+    background: rgba(255, 99, 71, 0.5);
+    margin: 50px;
+    min-height: 200px;
+    border-radius: 5px;
+    border: 3px solid #fece1a;
+    padding: 50px;
+}
+body {
+    background-image: url(mount-fuji-highest-mountain-in-japan-osx-lion-wallpaper.jpg);
+}
+

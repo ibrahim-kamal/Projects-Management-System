@@ -1,0 +1,431 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: arial;
+}
+
+body {
+    background: #FCF2E3;
+    font-family: arial;
+    margin: 0;
+    color: #888
+}
+
+.banner {
+    background: #2D1114;
+    line-height: 400px;
+    text-align: center;
+    color: #fff;
+    font-size: 60px;
+    height: 400px;
+    width: 100%;
+}
+
+.header {
+    height: 60px;
+    background: #463F3A;
+    color: #fff;
+    width: 100%;
+}
+
+.logo {
+    margin: 0;
+    line-height: 50px;
+    float: left;
+    top:
+}
+
+.nav {
+    list-style: none;
+    float: left;
+}
+
+    .nav li {
+        display: inline-block;
+    }
+
+        .nav li a {
+            display: inline-block;
+            padding: 3px 15px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    width: 100%;
+}
+
+    .container:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+
+.footer {
+    background: #2D2926;
+    color: #fff;
+    height: 100px
+}
+
+.copy {
+    font-size: 10px;
+    text-align: center
+}
+
+.bottom-nav {
+    text-align: center;
+    background: #2D1114;
+    width: 100%;
+    color: #fff;
+    height: 35px
+}
+
+    .bottom-nav .nav {
+        float: none;
+        margin: 0
+    }
+
+        .bottom-nav .nav a {
+            padding: 0 25px;
+            line-height: 35px
+        }
+
+.fixed-top {
+    background: #2D1114;
+    position: fixed;
+    top: 0;
+}
+
+.fixed-bottom {
+    top: auto;
+    bottom: 0;
+}
+
+
+.column {
+    width: 800px;
+    margin: auto;
+    position: relative;
+    height: 50px;
+    z-index: 1;
+    clear: both;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.column--intro {
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    color: #fff;
+    opacity: 0.4;
+}
+
+    .column--intro span {
+        font-size: 11px;
+    }
+
+.skew-title {
+    font-size: 25px;
+}
+
+    .skew-title span {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 50px;
+        margin: auto;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        font-family: 'roboto condensed';
+        font-weight: 700;
+        font-size: 35.714285714285715px;
+        line-height: 50px;
+        -webkit-transform: skewY(-15deg);
+        transform: skewY(-15deg);
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        transition: all 0.2s;
+        cursor: default;
+    }
+
+        .skew-title span:after,
+        .skew-title span:before {
+            display: block;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 50px;
+            position: absolute;
+            background: #185a81;
+            content: ' ';
+            z-index: -1;
+            transition: all 0.2s;
+        }
+
+        .skew-title span:before {
+            background: rgba(0,0,0,0.1);
+            -webkit-transform: skewY(15deg);
+            transform: skewY(15deg);
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+        }
+
+        .skew-title span:nth-child(even) {
+            background-color: #144c6e;
+            -webkit-transform: skewY(15deg);
+            transform: skewY(15deg);
+            -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+            color: #d9d9d9;
+        }
+
+            .skew-title span:nth-child(even):after {
+                background-color: #144c6e;
+            }
+
+            .skew-title span:nth-child(even):before {
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+                -webkit-transform: skewY(-15deg);
+                transform: skewY(-15deg);
+            }
+
+        .skew-title span.flat {
+            -webkit-transform: skewY(0);
+            transform: skewY(0);
+            color: #fff;
+        }
+
+            .skew-title span.flat:before {
+                -webkit-transform: skewY(0);
+                transform: skewY(0);
+            }
+
+            .skew-title span.flat:nth-child(even):after {
+                background-color: #185a81;
+            }
+
+        .skew-title span.alt:after {
+            background-color: #b94a2c;
+        }
+
+        .skew-title span.alt:nth-child(even):after {
+            background-color: #9d3f25;
+        }
+
+        .skew-title span.alt.flat:nth-child(even):after {
+            background-color: #b94a2c;
+        }
+
+/*.value7 {
+    background-image: url('http://urbanfragment.files.wordpress.com/2012/10/mount-fuji-highest-mountain-in-japan-osx-lion-wallpaper.jpg');
+    background-size: 100% 100%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+
+a.nostyle {
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+div.portfoliocard {
+    position: relative;
+    height: 450px;
+    width: 400px;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgba(0,0,0,0.7);
+    box-shadow: 0px -1px 3px rgba(0,0,0,0.1), 0px 2px 6px rgba(0,0,0,0.5);
+    border-radius: 6px;
+    margin: 10% auto;
+    overflow: hidden;
+    z-index: 100;
+}
+
+    div.portfoliocard div.coverphoto {
+        width: 100%;
+        height: 120px;
+        background: url('http://farm8.staticflickr.com/7149/6484148411_baf8d2e934_z.jpg');
+        background-position: center center;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        box-shadow: inset 0px 3px 20px rgba(255,255,255,0.3), 1px 0px 2px rgba(255,255,255,0.7);
+        z-index: 99;
+    }
+
+    div.portfoliocard div.left_col, div.portfoliocard div.right_col {
+        float: left;
+        height: 340px;
+    }
+
+    div.portfoliocard div.left_col {
+        width: 40%;
+        padding-top: 85px;
+        box-sizing: border-box;
+    }
+
+    div.portfoliocard div.right_col {
+        width: 60%;
+        background: rgba(245,245,245,1);
+        border-left: 1px solid rgba(230,230,230,1);
+        box-shadow: inset 0px 1px 1px rgba(255,255,255,0.7);
+        margin-left: -1px;
+        border-bottom-right-radius: 5px;
+    }
+
+        div.portfoliocard div.right_col h2.name {
+            font-size: 30px;
+            font-weight: 300;
+            color: rgba(30,30,30,1);
+            padding: 0;
+            margin: 20px 10px 0px 30px;
+        }
+
+        div.portfoliocard div.right_col h3.location {
+            font-size: 15px;
+            font-weight: 300;
+            color: rgba(170,170,170,1);
+            padding: 0;
+            margin: -5px 10px 10px 30px;
+        }
+
+    div.portfoliocard ul.contact_information {
+        margin-top: 20px;
+        padding-left: 30px;
+        list-style-type: none;
+    }
+
+        div.portfoliocard ul.contact_information li {
+            height: 25px;
+            width: 180px;
+            line-height: 25px;
+            font-weight: 300;
+            font-size: 15px;
+            color: rgba(140,140,140,1);
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+            padding: 5px 0px;
+            background-repeat: no-repeat;
+            background-size: 18px 18px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+            cursor: default;
+        }
+
+            div.portfoliocard ul.contact_information li:before {
+                content: "";
+                width: 25px;
+                height: 25px;
+                display: block;
+                float: left;
+                background-position: center;
+                background-size: 18px 18px;
+                background-repeat: no-repeat;
+                margin-right: 5px;
+                opacity: 0.7;
+            }
+
+            div.portfoliocard ul.contact_information li:hover:before {
+                opacity: 1;
+            }
+
+            div.portfoliocard ul.contact_information li.work:before {
+                background-image: url('http://schulzmarcel.de/x/icons/case_24.png');
+            }
+
+            div.portfoliocard ul.contact_information li.website:before {
+                background-image: url('http://schulzmarcel.de/x/icons/globe_24.png');
+            }
+
+            div.portfoliocard ul.contact_information li.mail:before {
+                background-image: url('http://schulzmarcel.de/x/icons/paper_plane_24.png');
+            }
+
+            div.portfoliocard ul.contact_information li.phone:before {
+                background-image: url('http://schulzmarcel.de/x/icons/phone_24.png');
+            }
+
+            div.portfoliocard ul.contact_information li.resume:before {
+                background-image: url('http://schulzmarcel.de/x/icons/inbox_24.png');
+            }
+
+.preview {
+    width: 150px;
+    height: 150px;
+    background: rgba(255,255,255,1);
+    position: absolute;
+    top: 75px;
+    left: 10px;
+    border-radius: 100%;
+    background-image: url('http://cache.spreadshirt.net/Public/Common/images/profile-pic-placeholder_130x130.png');
+    background-size: 100% 100%;
+    padding: 7px;
+    border: 4px solid rgba(255,255,255,1) display: block;
+    margin: 20px auto;
+    box-shadow: 0px 0px 0px 2px rgba(33, 122, 105, 1);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    z-index: 5;
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 30px auto;
+    margin-left: 40px;
+    border-radius: 0px;
+    border-bottom: 1px dashed rgba(33, 122, 105, 1);
+}
+
+.file-upload-native,
+.file-upload-text {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: block;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    color: #A30046;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.file-upload-native:focus,
+.file-upload-text:focus {
+    outline: none;
+}
+
+.file-upload-text {
+    z-index: 10;
+    padding: 5px 15px 8px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 1px;
+    text-overflow: ellipsis;
+    border: 0;
+    background-color: transparent;
+}
+
+.file-upload-native {
+    z-index: 15;
+    opacity: 0;
+}*/
+

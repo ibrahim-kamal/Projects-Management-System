@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Project_Management_System.Models.project>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Responsive Table Layout</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/css/projectState.css">
+</head>
+<body class="value1">
+    <button style="background-color:antiquewhite ;width:1286px;height:50px">Form</button>
+
+    <div class="wrapper">
+        <h1 class="column skew-title">
+            <span>C</span><span>U</span><span>R</span><span>R</span><span>E</span><span>N</span><span class="last">T</span>
+            &nbsp;
+            <span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span class="last">T</span>
+            &nbsp;
+        </h1>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src="js/index.js"></script>
+        <div class="table">
+
+            <div class="row value2 blue">
+                <div class="cell">
+                    Title
+                </div>
+                <div class="cell">
+                    Description
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+
+                if (item.state == 0)
+                {
+                    <div class="row">
+
+                        <div class="cell" data-title="Username">
+
+                            <dd>
+                                <a href=@("/Project/project/"+@item.id)>@item.title</a>
+                            </dd>
+                        </div>
+
+
+                        <div class="cell" data-title="Email">
+                            <dd>
+                                @item.description
+                            </dd>
+
+                        </div>
+                    </div>
+
+
+                }
+            }
+        </div>
+
+        <h1 class="column skew-title">
+            <span>H</span><span>I</span><span>S</span><span>T</span><span>O</span><span>R</span><span class="last">Y</span>
+            &nbsp;
+            <span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span class="last">T</span>
+            &nbsp;
+        </h1>
+        <script>
+            (function () {
+                $('.skew-title').children('span').hover((function () {
+                    var $el, n;
+                    $el = $(this);
+                    n = $el.index() + 1;
+                    $el.addClass('flat');
+                    if (n % 2 === 0) {
+                        return $el.prev().addClass('flat');
+                    } else {
+                        if (!$el.hasClass('last')) {
+                            return $el.next().addClass('flat');
+                        }
+                    }
+                }), function () {
+                    return $('.flat').removeClass('flat');
+                });
+
+            }).call(this);
+        </script>
+
+        <div class="table">
+
+            <div class="row value2 blue">
+                <div class="cell">
+                    Title
+                </div>
+                <div class="cell">
+                    Description
+                </div>
+            </div>
+
+            @foreach (var item in Model)
+            {
+
+                if (item.state == 1)
+                {
+                    <div class="row">
+
+                        <div class="cell" data-title="Username">
+
+                            <dd>
+                                @item.title
+                            </dd>
+                        </div>
+
+                        <div class="cell" data-title="Email">
+
+                            <dd>
+                                @item.description
+                            </dd>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</body>
+</html>

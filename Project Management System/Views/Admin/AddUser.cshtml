@@ -1,0 +1,156 @@
+﻿@model Project_Management_System.Models.user
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/AddPage.css">
+
+
+
+
+</head>
+<body>
+    <section class="addView">
+
+        <div class="container">
+
+            <h2 class="h1 text-center">Add User</h2>
+
+            <div class="line line2"></div>
+
+            <div class="formContainer">
+
+                <div class="row">
+
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <h3 class="LinkClass center-block">@ViewBag.Message</h3>
+                    }
+
+                    @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.fname)
+
+                            @Html.TextBoxFor(model => model.fname, new { @class = "form-control", placeholder = "First Name", type = "text" })
+
+                            @Html.ValidationMessageFor(model => model.fname, "", new { @class = "MessageError" })
+
+                        </div>
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.lname)
+
+                            @Html.TextBoxFor(model => model.lname, new { @class = "form-control", placeholder = "Last Name", type = "text", required = "true" })
+
+                            @Html.ValidationMessageFor(model => model.lname, "", new { @class = "MessageError" })
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.password)
+
+                            @Html.TextBoxFor(model => model.password, new { @class = "form-control", placeholder = "password", type = "password", required = "true" })
+
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "MessageError" })
+
+                        </div>
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.job)
+
+                            @Html.TextBoxFor(model => model.job, new { @class = "form-control", placeholder = "Job Description", type = "text", required = "true" })
+
+                            @Html.ValidationMessageFor(model => model.job, "", new { @class = "MessageError" })
+
+                        </div>
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.type_id)
+                            @{
+                                List<SelectListItem> listItems = new List<SelectListItem>();
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "Project Manager",
+                                    Value = "2"
+                                });
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "Team Leader",
+                                    Value = "3",
+                                    Selected = true
+                                });
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "Jounir Developer",
+                                    Value = "4"
+                                });
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = "Customer",
+                                    Value = "5"
+                                });
+                            }
+                            @Html.DropDownListFor(model => model.type_id, listItems, "-- Select Status --")
+
+
+                        </div>
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.mobile)
+
+                            @Html.TextBoxFor(model => model.mobile, new { @class = "form-control", placeholder = "Phone", required = "true" })
+
+                            @Html.ValidationMessageFor(model => model.mobile, "", new { @class = "MessageError" })
+
+                        </div>
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.email)
+
+                            @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Example@email.com", type = "email", required = "true" })
+
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "MessageError" })
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+
+                                @Html.LabelFor(model => model.photo)
+
+                                <input type="file" name="file" class="btn btn-light" />
+                                @Html.ValidationMessageFor(model => model.photo, "", new { @class = "MessageError" })
+                            </div>
+                        </div>
+
+
+                        <div>
+
+                            <input type="submit" class="btn btn-primary" value="Add User">
+                        </div>
+
+
+                    }
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+

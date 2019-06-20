@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="project" Relationship="Self.FK_comment_project" FromRole="comment" ToRole="project" />
+    <NavigationProperty Name="user" Relationship="Self.FK_comment_user" FromRole="comment" ToRole="user" />
+  </EntityType>
+  <EntityType Name="feedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rate" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PM_id" Type="Int32" Nullable="false" />
+    <Property Name="TL_id" Type="Int32" Nullable="false" />
+    <Property Name="JD_id" Type="Int32" Nullable="false" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="JD" Relationship="Self.FK_feedback_JDs" FromRole="feedback" ToRole="JDs" />
+    <NavigationProperty Name="PM" Relationship="Self.FK_feedback_PMS" FromRole="feedback" ToRole="PMS" />
+    <NavigationProperty Name="project" Relationship="Self.FK_feedback_project" FromRole="feedback" ToRole="project" />
+    <NavigationProperty Name="TL" Relationship="Self.FK_feedback_TLs" FromRole="feedback" ToRole="TLs" />
+  </EntityType>
+  <EntityType Name="JD">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="coding_skills" Type="Int32" Nullable="false" />
+    <Property Name="system_design" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="feedbacks" Relationship="Self.FK_feedback_JDs" FromRole="JDs" ToRole="feedback" />
+    <NavigationProperty Name="user" Relationship="Self.FK_JDs_user" FromRole="JDs" ToRole="user" />
+  </EntityType>
+  <EntityType Name="PM">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="analytical" Type="Int32" Nullable="false" />
+    <Property Name="highly_organized" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="feedbacks" Relationship="Self.FK_feedback_PMS" FromRole="PMS" ToRole="feedback" />
+    <NavigationProperty Name="user" Relationship="Self.FK_PMS_user" FromRole="PMS" ToRole="user" />
+    <NavigationProperty Name="requests" Relationship="Self.FK_request_PMS" FromRole="PMS" ToRole="request" />
+    <NavigationProperty Name="requestProjects" Relationship="Self.FK_requestProject_PMS1" FromRole="PMS" ToRole="requestProject" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="state" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_post_user" FromRole="post" ToRole="user" />
+    <NavigationProperty Name="requestProjects" Relationship="Self.FK_requestProject_post1" FromRole="post" ToRole="requestProject" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="state" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="project_remove" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="comments" Relationship="Self.FK_comment_project" FromRole="project" ToRole="comment" />
+    <NavigationProperty Name="feedbacks" Relationship="Self.FK_feedback_project" FromRole="project" ToRole="feedback" />
+    <NavigationProperty Name="requests" Relationship="Self.FK_request_project" FromRole="project" ToRole="request" />
+    <NavigationProperty Name="teams" Relationship="Self.FK_team_project" FromRole="project" ToRole="team" />
+  </EntityType>
+  <EntityType Name="request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PM_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="url" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="request_state" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PM" Relationship="Self.FK_request_PMS" FromRole="request" ToRole="PMS" />
+    <NavigationProperty Name="project" Relationship="Self.FK_request_project" FromRole="request" ToRole="project" />
+    <NavigationProperty Name="user" Relationship="Self.FK_request_user" FromRole="request" ToRole="user" />
+  </EntityType>
+  <EntityType Name="requestProject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="post_id" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="6" Scale="4" Nullable="false" />
+    <Property Name="PMs_id" Type="Int32" Nullable="false" />
+    <Property Name="duration" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="PM" Relationship="Self.FK_requestProject_PMS1" FromRole="requestProject" ToRole="PMS" />
+    <NavigationProperty Name="post" Relationship="Self.FK_requestProject_post1" FromRole="requestProject" ToRole="post" />
+  </EntityType>
+  <EntityType Name="team">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="user_state" Type="Int32" Nullable="false" />
+    <Property Name="user_remove" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="project" Relationship="Self.FK_team_project" FromRole="team" ToRole="project" />
+    <NavigationProperty Name="user" Relationship="Self.FK_team_user" FromRole="team" ToRole="user" />
+  </EntityType>
+  <EntityType Name="TL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="decision_making" Type="Int32" Nullable="false" />
+    <Property Name="excellent_communication" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="feedbacks" Relationship="Self.FK_feedback_TLs" FromRole="TLs" ToRole="feedback" />
+    <NavigationProperty Name="user" Relationship="Self.FK_TLs_user" FromRole="TLs" ToRole="user" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="users" Relationship="Self.FK_user_type" FromRole="type" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type_id" Type="Int32" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="320" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="job" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="comments" Relationship="Self.FK_comment_user" FromRole="user" ToRole="comment" />
+    <NavigationProperty Name="JD" Relationship="Self.FK_JDs_user" FromRole="user" ToRole="JDs" />
+    <NavigationProperty Name="PM" Relationship="Self.FK_PMS_user" FromRole="user" ToRole="PMS" />
+    <NavigationProperty Name="posts" Relationship="Self.FK_post_user" FromRole="user" ToRole="post" />
+    <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
+    <NavigationProperty Name="teams" Relationship="Self.FK_team_user" FromRole="user" ToRole="team" />
+    <NavigationProperty Name="TL" Relationship="Self.FK_TLs_user" FromRole="user" ToRole="TLs" />
+    <NavigationProperty Name="type" Relationship="Self.FK_user_type" FromRole="user" ToRole="type" />
+  </EntityType>
+  <Association Name="FK_comment_project">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_comment_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_JDs">
+    <End Role="JDs" Type="Self.JD" Multiplicity="1" />
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JDs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="JD_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_PMS">
+    <End Role="PMS" Type="Self.PM" Multiplicity="1" />
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="PM_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_project">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_TLs">
+    <End Role="TLs" Type="Self.TL" Multiplicity="1" />
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TLs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="TL_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JDs_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="JDs" Type="Self.JD" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="JDs">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMS_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="PMS" Type="Self.PM" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PMS">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_PMS">
+    <End Role="PMS" Type="Self.PM" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="PM_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_requestProject_PMS1">
+    <End Role="PMS" Type="Self.PM" Multiplicity="1" />
+    <End Role="requestProject" Type="Self.requestProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="requestProject">
+        <PropertyRef Name="PMs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_post_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="post" Type="Self.post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="post">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_requestProject_post1">
+    <End Role="post" Type="Self.post" Multiplicity="1" />
+    <End Role="requestProject" Type="Self.requestProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="requestProject">
+        <PropertyRef Name="post_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_project">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_team_project">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="team" Type="Self.team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_team_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="team" Type="Self.team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TLs_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="TLs" Type="Self.TL" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TLs">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_type">
+    <End Role="type" Type="Self.type" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Project_ManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="comments" EntityType="Self.comment" />
+    <EntitySet Name="feedbacks" EntityType="Self.feedback" />
+    <EntitySet Name="JDs" EntityType="Self.JD" />
+    <EntitySet Name="PMS" EntityType="Self.PM" />
+    <EntitySet Name="posts" EntityType="Self.post" />
+    <EntitySet Name="projects" EntityType="Self.project" />
+    <EntitySet Name="requests" EntityType="Self.request" />
+    <EntitySet Name="requestProjects" EntityType="Self.requestProject" />
+    <EntitySet Name="teams" EntityType="Self.team" />
+    <EntitySet Name="TLs" EntityType="Self.TL" />
+    <EntitySet Name="types" EntityType="Self.type" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_comment_project" Association="Self.FK_comment_project">
+      <End Role="project" EntitySet="projects" />
+      <End Role="comment" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_comment_user" Association="Self.FK_comment_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="comment" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_JDs" Association="Self.FK_feedback_JDs">
+      <End Role="JDs" EntitySet="JDs" />
+      <End Role="feedback" EntitySet="feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_PMS" Association="Self.FK_feedback_PMS">
+      <End Role="PMS" EntitySet="PMS" />
+      <End Role="feedback" EntitySet="feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_project" Association="Self.FK_feedback_project">
+      <End Role="project" EntitySet="projects" />
+      <End Role="feedback" EntitySet="feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_TLs" Association="Self.FK_feedback_TLs">
+      <End Role="TLs" EntitySet="TLs" />
+      <End Role="feedback" EntitySet="feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JDs_user" Association="Self.FK_JDs_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="JDs" EntitySet="JDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMS_user" Association="Self.FK_PMS_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="PMS" EntitySet="PMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_PMS" Association="Self.FK_request_PMS">
+      <End Role="PMS" EntitySet="PMS" />
+      <End Role="request" EntitySet="requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_requestProject_PMS1" Association="Self.FK_requestProject_PMS1">
+      <End Role="PMS" EntitySet="PMS" />
+      <End Role="requestProject" EntitySet="requestProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_post_user" Association="Self.FK_post_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="post" EntitySet="posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_requestProject_post1" Association="Self.FK_requestProject_post1">
+      <End Role="post" EntitySet="posts" />
+      <End Role="requestProject" EntitySet="requestProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_project" Association="Self.FK_request_project">
+      <End Role="project" EntitySet="projects" />
+      <End Role="request" EntitySet="requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_team_project" Association="Self.FK_team_project">
+      <End Role="project" EntitySet="projects" />
+      <End Role="team" EntitySet="teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="request" EntitySet="requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_team_user" Association="Self.FK_team_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="team" EntitySet="teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TLs_user" Association="Self.FK_TLs_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="TLs" EntitySet="TLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_type" Association="Self.FK_user_type">
+      <End Role="type" EntitySet="types" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

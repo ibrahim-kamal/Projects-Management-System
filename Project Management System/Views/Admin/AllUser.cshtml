@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Project_Management_System.Models.user>
+@{
+    ViewBag.Title = "AllUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+
+
+
+<head>
+
+    <style>
+
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #FCF2E3;
+        }
+
+        table {
+            border-collapse: separate;
+            background: #fff;
+            margin: 50px auto;
+        }
+
+        thead th {
+            font-family: 'Patua One', cursive;
+            font-size: 16px;
+            font-weight: 400;
+            color: #ddd;
+            background-color: gray;
+            text-align: left;
+            padding: 20px;
+            border-top: 1px solid #858d99;
+        }
+
+        tbody tr td {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            color: #5f6062;
+            font-size: 13px;
+            padding: 20px 20px 20px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tbody tr:nth-child(2n) {
+            background: #f0f3f5;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody:hover > tr:hover td {
+            color: #2d2d2d;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name </th>
+                <th>Type</th>
+                <th>Jop</th>
+                <th>Post Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(modelItem => item.fname)</td>
+                    <td>  @Html.DisplayFor(modelItem => item.lname)</td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type.name)
+                    </td>
+                    <td>          @Html.DisplayFor(modelItem => item.job)</td>
+
+                    <td>
+
+
+
+                        @Html.ActionLink("Update", "UpdateUser", new { id = item.id, @class = "btn btn-success"  }) |
+                        @Html.ActionLink("Delete", "DeleteUser", new { id = item.id, @class = "btn btn-danger"  })
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+</body>
+
+
+
+</html>

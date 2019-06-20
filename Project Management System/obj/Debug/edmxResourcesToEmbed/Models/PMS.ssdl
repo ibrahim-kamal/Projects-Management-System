@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="project_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="text" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="feedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rate" Type="int" Nullable="false" />
+    <Property Name="content" Type="varchar(max)" Nullable="false" />
+    <Property Name="PM_id" Type="int" Nullable="false" />
+    <Property Name="TL_id" Type="int" Nullable="false" />
+    <Property Name="JD_id" Type="int" Nullable="false" />
+    <Property Name="project_id" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JDs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="coding_skills" Type="int" Nullable="false" />
+    <Property Name="system_design" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PMS">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="analytical" Type="int" Nullable="false" />
+    <Property Name="highly_organized" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" Nullable="false" />
+    <Property Name="state" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" Nullable="false" />
+    <Property Name="description" Type="varchar(max)" Nullable="false" />
+    <Property Name="state" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="6" Scale="4" Nullable="false" />
+    <Property Name="project_remove" Type="int" Nullable="false" />
+    <Property Name="start_date" Type="date" Nullable="false" />
+    <Property Name="end_date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PM_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="project_id" Type="int" Nullable="false" />
+    <Property Name="url" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="request_state" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="requestProject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="post_id" Type="int" Nullable="false" />
+    <Property Name="content" Type="varchar(max)" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="6" Scale="4" Nullable="false" />
+    <Property Name="PMs_id" Type="int" Nullable="false" />
+    <Property Name="duration" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="team">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="project_id" Type="int" Nullable="false" />
+    <Property Name="user_state" Type="int" Nullable="false" />
+    <Property Name="user_remove" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TLs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="decision_making" Type="int" Nullable="false" />
+    <Property Name="excellent_communication" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="fname" Type="varchar(max)" Nullable="false" />
+    <Property Name="lname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="320" Nullable="false" />
+    <Property Name="mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="job" Type="text" Nullable="false" />
+    <Property Name="photo" Type="varchar(max)" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_comment_project">
+    <End Role="project" Type="Self.project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_comment_user">
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_JDs">
+    <End Role="JDs" Type="Self.JDs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JDs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="JD_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_PMS">
+    <End Role="PMS" Type="Self.PMS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="PM_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_project">
+    <End Role="project" Type="Self.project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_feedback_TLs">
+    <End Role="TLs" Type="Self.TLs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TLs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="TL_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JDs_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="JDs" Type="Self.JDs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="JDs">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PMS_user">
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PMS" Type="Self.PMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PMS">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_post_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="post" Type="Self.post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="post">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="project" Type="Self.project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="project">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_PMS">
+    <End Role="PMS" Type="Self.PMS" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="PM_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_project">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_request_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="request" Type="Self.request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="request">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_requestProject_PMS1">
+    <End Role="PMS" Type="Self.PMS" Multiplicity="1" />
+    <End Role="requestProject" Type="Self.requestProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PMS">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="requestProject">
+        <PropertyRef Name="PMs_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_requestProject_post1">
+    <End Role="post" Type="Self.post" Multiplicity="1" />
+    <End Role="requestProject" Type="Self.requestProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="post">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="requestProject">
+        <PropertyRef Name="post_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_team_project">
+    <End Role="project" Type="Self.project" Multiplicity="1" />
+    <End Role="team" Type="Self.team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_team_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="team" Type="Self.team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="team">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TLs_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="TLs" Type="Self.TLs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TLs">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_type">
+    <End Role="type" Type="Self.type" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="comment" EntityType="Self.comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JDs" EntityType="Self.JDs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMS" EntityType="Self.PMS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="project" EntityType="Self.project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="request" EntityType="Self.request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="requestProject" EntityType="Self.requestProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="team" EntityType="Self.team" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TLs" EntityType="Self.TLs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_comment_project" Association="Self.FK_comment_project">
+      <End Role="project" EntitySet="project" />
+      <End Role="comment" EntitySet="comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_comment_user" Association="Self.FK_comment_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="comment" EntitySet="comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_JDs" Association="Self.FK_feedback_JDs">
+      <End Role="JDs" EntitySet="JDs" />
+      <End Role="feedback" EntitySet="feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_PMS" Association="Self.FK_feedback_PMS">
+      <End Role="PMS" EntitySet="PMS" />
+      <End Role="feedback" EntitySet="feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_project" Association="Self.FK_feedback_project">
+      <End Role="project" EntitySet="project" />
+      <End Role="feedback" EntitySet="feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_feedback_TLs" Association="Self.FK_feedback_TLs">
+      <End Role="TLs" EntitySet="TLs" />
+      <End Role="feedback" EntitySet="feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JDs_user" Association="Self.FK_JDs_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="JDs" EntitySet="JDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PMS_user" Association="Self.FK_PMS_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="PMS" EntitySet="PMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_post_user" Association="Self.FK_post_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="post" EntitySet="post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_user" Association="Self.FK_PROJECT_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="project" EntitySet="project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_PMS" Association="Self.FK_request_PMS">
+      <End Role="PMS" EntitySet="PMS" />
+      <End Role="request" EntitySet="request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_project" Association="Self.FK_request_project">
+      <End Role="project" EntitySet="project" />
+      <End Role="request" EntitySet="request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="request" EntitySet="request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_requestProject_PMS1" Association="Self.FK_requestProject_PMS1">
+      <End Role="PMS" EntitySet="PMS" />
+      <End Role="requestProject" EntitySet="requestProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_requestProject_post1" Association="Self.FK_requestProject_post1">
+      <End Role="post" EntitySet="post" />
+      <End Role="requestProject" EntitySet="requestProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_team_project" Association="Self.FK_team_project">
+      <End Role="project" EntitySet="project" />
+      <End Role="team" EntitySet="team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_team_user" Association="Self.FK_team_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="team" EntitySet="team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TLs_user" Association="Self.FK_TLs_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="TLs" EntitySet="TLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_type" Association="Self.FK_user_type">
+      <End Role="type" EntitySet="type" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

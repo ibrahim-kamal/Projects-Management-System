@@ -1,0 +1,308 @@
+﻿@model Project_Management_System.Models.user
+
+@{
+    ViewBag.Title = "EditMyProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Example validation</title>
+
+
+    <!--  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+      <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>-->
+    <link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
+    <link rel="stylesheet" href="~/Content/css/EditMyProfile.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("EditMyProfile", "Home", FormMethod.Post,  new { @class = "well form-horizontal", id = "contact_form", enctype = "multipart/form-data" }))
+        {
+
+            int type = Model.type_id;
+
+        <fieldset>
+            <legend>Edit My Profile</legend>
+            <div class="form-group">
+
+                <div class="preview img-wrapper">
+                </div>
+                <div class="file-upload-wrapper">
+                    <input type="file" name="file" class="file-upload-native" accept="image/*" />
+                    <input type="text" disabled placeholder="upload image" class="file-upload-text" />
+                </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">First Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            @Html.EditorFor(model => model.fname, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                            @Html.ValidationMessageFor(model => model.fname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Last Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            @Html.EditorFor(model => model.lname, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                            @Html.ValidationMessageFor(model => model.lname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">E-Mail</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Mobile #</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            @Html.EditorFor(model => model.mobile, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.mobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">job Description</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            @Html.EditorFor(model => model.job, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.job, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning">Edit <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+        </fieldset>
+        }
+    </div><!-- /.container -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+
+
+
+    <script>
+
+        $(function () {
+            function maskImgs() {
+                //$('.img-wrapper img').imagesLoaded({}, function() {
+                $.each($('.img-wrapper img'), function (index, img) {
+                    var src = $(img).attr('src');
+                    var parent = $(img).parent();
+                    parent
+                        .css('background', 'url(' + src + ') no-repeat center center')
+                        .css('background-size', 'cover');
+                    $(img).remove();
+                });
+                //});
+            }
+
+            var preview = {
+                init: function () {
+                    preview.setPreviewImg();
+                    preview.listenInput();
+                },
+                setPreviewImg: function (fileInput) {
+                    var path = $(fileInput).val();
+                    var uploadText = $(fileInput).siblings('.file-upload-text');
+
+                    if (!path) {
+                        $(uploadText).val('');
+                    } else {
+                        path = path.replace(/^C:\\fakepath\\/, "");
+                        $(uploadText).val(path);
+
+                        preview.showPreview(fileInput, path, uploadText);
+                    }
+                },
+                showPreview: function (fileInput, path, uploadText) {
+                    var file = $(fileInput)[0].files;
+
+                    if (file && file[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            var previewImg = $(fileInput).parents('.file-upload-wrapper').siblings('.preview');
+                            var img = $(previewImg).find('img');
+
+                            if (img.length == 0) {
+                                $(previewImg).html('<img src="' + e.target.result + '" alt=""/>');
+                            } else {
+                                img.attr('src', e.target.result);
+                            }
+
+                            uploadText.val(path);
+                            maskImgs();
+                        }
+
+                        reader.onloadstart = function () {
+                            $(uploadText).val('uploading..');
+                        }
+
+                        reader.readAsDataURL(file[0]);
+                    }
+                },
+                listenInput: function () {
+                    $('.file-upload-native').on('change', function () {
+                        preview.setPreviewImg(this);
+                    });
+                }
+            };
+            preview.init();
+        });
+
+
+
+        $(document).ready(function () {
+            $('#contact_form').bootstrapValidator({
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    first_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your first name'
+                            }
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            stringLength: {
+                                min: 2,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your last name'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your email address'
+                            },
+                            emailAddress: {
+                                message: 'Please supply a valid email address'
+                            }
+                        }
+                    },
+                    phone: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your phone number'
+                            },
+                            phone: {
+                                country: 'US',
+                                message: 'Please supply a vaild phone number with area code'
+                            }
+                        }
+                    },
+                    address: {
+                        validators: {
+                            stringLength: {
+                                min: 8,
+                            },
+                            notEmpty: {
+                                message: 'Please supply your street address'
+                            }
+                        }
+                    },
+                    state: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please select User Type'
+                            }
+                        }
+                    },
+                    pass: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please supply your Password'
+                            },
+                            zipCode: {
+                                country: 'US',
+                                message: 'Please supply a Password'
+                            }
+                        }
+                    },
+                    comment: {
+                        validators: {
+                            stringLength: {
+                                min: 10,
+                                max: 200,
+                                message: 'Please enter at least 10 characters and no more than 200'
+                            },
+                            notEmpty: {
+                                message: 'Please supply a description of your Job'
+                            }
+                        }
+                    }
+                }
+            })
+                .on('success.form.bv', function (e) {
+                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                    $('#contact_form').data('bootstrapValidator').resetForm();
+
+                    e.preventDefault();
+
+                    var $form = $(e.target);
+
+                    var bv = $form.data('bootstrapValidator');
+
+                    $.post($form.attr('action'), $form.serialize(), function (result) {
+                        console.log(result);
+                    }, 'json');
+                });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
+

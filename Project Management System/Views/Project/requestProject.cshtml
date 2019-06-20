@@ -1,0 +1,368 @@
+﻿@model Project_Management_System.Models.requestProject
+@{
+    ViewBag.Title = "requestProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>#DailyUI028 Contact Form</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="~/Content/css/addPost.css">
+    <style>
+        .value12 {
+            height: 600px;
+        }
+
+        [type="date"] {
+            background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+        }
+
+            [type="date"]::-webkit-inner-spin-button {
+                display: none;
+            }
+
+            [type="date"]::-webkit-calendar-picker-indicator {
+                opacity: 0;
+            }
+
+        .picker {
+            border: 1px solid #c4c4c4;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 3px 5px;
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+            width: 190px;
+        }
+
+        input[type="number"] {
+            display: block;
+            margin-top: 6px;
+            width: 150px;
+        }
+
+
+        a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .container {
+            margin-top: -60px;
+            width: 100%;
+            position: relative;
+        }
+
+        .clr {
+            clear: both;
+            padding: 0;
+            height: 0;
+            margin: 0;
+        }
+
+        .main {
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        ::selection {
+            background: transparent;
+        }
+
+        ::-moz-selection {
+            background: transparent;
+        }
+
+        .wrapper-demo {
+            margin: 60px 0 0 0;
+            *zoom: 1;
+            font-weight: 400;
+        }
+
+            .wrapper-demo:after {
+                clear: both;
+                content: "";
+                display: table;
+            }
+
+        /* DEMO 1 */
+
+        .wrapper-dropdown-1 {
+            /* Size and position */
+            position: relative; /* Enable absolute positionning for children and pseudo elements */
+            width: 200px;
+            padding: 2px 15px;
+            line-height: 1.4;
+            margin: 0 auto;
+            height: 24px;
+            border: 1px solid #bfbfbf;
+            -webkit-border-radius: 14px;
+            font-size: 12px;
+            border-radius: 14px;
+            /* Styles */
+            background: url('https://i.imgur.com/RCY8myL.jpg');
+            color: #8080;
+            outline: none;
+            cursor: pointer;
+            /* Font settings */
+            font-weight: bold;
+            color: #808080;
+        }
+
+            .wrapper-dropdown-1:after {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                margin-top: -3px;
+                border-width: 6px 6px 0 6px;
+                border-style: solid;
+                border-color: #979797 transparent;
+            }
+
+            .wrapper-dropdown-1 .dropdown {
+                /* Size & position */
+                position: absolute;
+                top: 120%;
+                left: 0;
+                right: 0;
+                /* Styles */
+                background: #f9f8f6;
+                -webkit-border-radius: 14px;
+                border-radius: 14px;
+                border: 1px solid #dcdcdc;
+                list-style: none;
+                font-weight: normal; /* Cancels previous font-weight: bold; */
+                /* Hiding */
+                opacity: 0;
+                pointer-events: none;
+            }
+
+                .wrapper-dropdown-1 .dropdown li {
+                    border-bottom: 1px solid #dcdcdc;
+                    border-top: 1px solid #ffffff;
+                }
+
+                    .wrapper-dropdown-1 .dropdown li a {
+                        display: block;
+                        text-decoration: none;
+                        color: #9e9e9e;
+                        padding: 5px 20px;
+                    }
+
+                    /* Hover state */
+                    .wrapper-dropdown-1 .dropdown li:hover a {
+                        background: #f3f8f8;
+                    }
+
+            /* Active state */
+            .wrapper-dropdown-1.active .dropdown {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .wrapper-dropdown-1.active:after {
+                border-color: #a9a9a9 transparent;
+                border-width: 6px 6px 0 6px;
+                margin-top: -3px;
+            }
+
+            .wrapper-dropdown-1.active {
+            }
+
+        /* No CSS3 support */
+
+        .no-opacity .wrapper-dropdown-1 .dropdown,
+        .no-pointerevents .wrapper-dropdown-1 .dropdown {
+            display: none;
+            opacity: 1; /* If opacity support but no pointer-events support */
+            pointer-events: auto; /* If pointer-events support but no pointer-events support */
+        }
+
+        .no-opacity .wrapper-dropdown-1.active .dropdown,
+        .no-pointerevents .wrapper-dropdown-1.active .dropdown {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+	@using (Html.BeginForm("requestProject", "Project", FormMethod.Post, new { @class = "value12", enctype = "multipart/form-data" }))
+	{
+		<h2 class="value13">Request Project</h2>
+
+		<div class="form-group">
+
+
+			<p class="value15" type="Content:">
+				@Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "value14", placeholder = "What would you like to tell us.." } })
+
+			</p>
+		</div>
+		<div class="form-group">
+
+			<p class="value15" type="Price">
+				@Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "value14" , type = "number", min = "1" ,max = "1000000" ,value = "1",id = "quantity" , placeholder = "Write Price of project here.." } })
+
+
+			</p>
+		</div>
+		<div class="form-group">
+
+			<p class="value15" type="Duration:">
+				@Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "picker value14", placeholder = "Choose the duration of the project ..", type = "date" ,name = "dateofbirth" ,id = "dateofbirth" } })
+
+			</p>
+			</div>
+			<button class="value16">Request</button>
+			<div class="value17">
+				<span class="value18 fa fa-envelope-o"></span> ProjectManagement@company.com
+			</div>
+			}
+			<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script>
+
+
+			<script>
+
+
+				function DropDown(el) {
+					this.dd = el;
+					this.placeholder = this.dd.children('span');
+					this.opts = this.dd.find('ul.dropdown > li');
+					var classeativa = this.dd.find('ul.dropdown > li.active');
+					var textoativa = classeativa.children().text();
+					this.val = textoativa;
+					this.placeholder.text(textoativa);
+					this.index = -1;
+					this.initEvents();
+				}
+				DropDown.prototype = {
+					initEvents: function () {
+						var obj = this;
+
+						obj.dd.on('click', function (event) {
+							$(this).toggleClass('active');
+							return false;
+						});
+
+						obj.opts.on('click', function () {
+							var opt = $(this);
+							obj.val = opt.text();
+							obj.index = opt.index();
+							obj.placeholder.text(obj.val);
+						});
+					},
+					getValue: function () {
+						return this.val;
+					},
+					getIndex: function () {
+						return this.index;
+					}
+				}
+
+				$(function () {
+
+					var dd = new DropDown($('#dd'));
+
+					$(document).click(function () {
+						// all dropdowns
+						$('.wrapper-dropdown-1').removeClass('active');
+					});
+
+				});
+
+
+
+				var NumberField = {
+					opts: {
+						quantityParentSelector: '.quantity-wrapper'
+					},
+					init: function (el) {
+						this.$el = $(el);
+						this.$elParent = this.$el.parent(this.opts.quantityParentSelector);
+
+						if (this.$elParent.length === 0) {
+							console.error('can\'t find .quantity-wrapper parent container');
+
+							return false;
+						}
+
+						this.notice = this.$elParent.data('quantity-notice') || '';
+						this.minNumber = parseInt(this.$el.attr('min'), 10) || 1;
+						this.maxNumber = parseInt(this.$el.attr('max'), 10) || 1000;
+
+						this.addListener();
+
+						return true;
+					},
+					addListener: function () {
+						this.$el.on('change', function () {
+							this.set();
+						}.bind(this));
+					},
+					set: function () {
+						this.number = this.getNumber(this.$el.val());
+
+						if (!this.isNumber(this.number) || this.minNumber > this.number) {
+							this.setNumber(this.minNumber);
+							this.setNotice('(min. ' + this.minNumber + ')');
+
+							return false;
+						}
+
+						if (this.maxNumber < this.number) {
+							this.setNumber(this.maxNumber);
+							this.setNotice('(max. ' + this.maxNumber + ')');
+
+							return false;
+						}
+
+						this.setNumber(this.number);
+						this.setNotice(this.notice);
+
+						return true;
+					},
+					getNumber: function (str) {
+						return Math.ceil(parseFloat(this._replaceComma(str)));
+					},
+					setNumber: function (number) {
+						this.$el.val(number);
+					},
+					setNotice: function (notice) {
+						this.$elParent.attr('data-quantity-notice', notice);
+					},
+					isNumber: function (value) {
+						return $.isNumeric(value);
+					},
+					_replaceComma: function (str) {
+						return str.replace(/,/g, '.');
+					}
+				};
+
+				// Init
+				NumberField.init('#quantity');</script>
+	</body>
+
+</html>

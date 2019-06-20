@@ -1,0 +1,115 @@
+﻿@model Project_Management_System.Models.request
+
+@{
+    ViewBag.Title = "showRequests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "reg";
+}
+
+<html>
+
+<head>
+    <style>
+
+        #submit {
+            float: right;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-bottom: -20px;
+            -moz-border-radius: .2em;
+            -webkit-border-radius: .2em;
+            border-radius: .2em;
+            padding: 8px 25px;
+            color: #ffffff;
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            text-shadow: 0px -1px 0px #142353;
+            border: 1px solid #3d4f8b;
+            -moz-box-shadow: inset 0px 0px 0px 1px rgba(147, 187, 255, 0.30), 0px 2px 2px 0px rgba(0, 0, 0, 0.30);
+            -webkit-box-shadow: inset 0px 0px 0px 1px rgba(147, 187, 255, 0.30), 0px 2px 2px 0px rgba(0, 0, 0, 0.30);
+            box-shadow: inset 0px 0px 0px 1px rgba(147, 187, 255, 0.30), 0px 2px 2px 0px rgba(0, 0, 0, 0.30);
+            background: #305096; /* old browsers */
+            background: -moz-linear-gradient(top, #5277c8 0%, #305096 100%); /* firefox */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5277c8), color-stop(100%,#305096)); /* webkit */
+            background: linear-gradient(top, #5277c8 0%, #305096 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5277c8', endColorstr='#305096', GradientType=0 ); /* ie */
+        }
+
+        fieldset {
+            border: 0;
+        }
+
+        #post-container {
+            background: #CCC;
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+        }
+
+        #text-box {
+            background: #f1f1f1;
+            padding: 6px;
+            margin-top: -5px;
+            margin-bottom: -15px;
+            width: 650px;
+            height: 100px;
+            font-family: 'Merriweather Sans', sans-serif;
+            font-size: 14px;
+            border: 1px solid #82aee8;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 0 1px 1px #82aee8 inset;
+            -webkit-box-shadow: 0 1px 1px #82aee8 inset;
+            box-shadow: 0 1px 1px #82aee8 inset;
+        }
+
+            #text-box:focus {
+                background-color: #fff;
+                border-color: #82aee8;
+                outline: none;
+                -moz-box-shadow: 0 0 0 1px #82aee8 inset;
+                -webkit-box-shadow: 0 0 0 1px #82aee8 inset;
+                box-shadow: 0 0 0 1px #82aee8 inset;
+            }
+
+        .des {
+            font-size: 30px;
+            margin: 20px;
+            background-color: aliceblue;
+            padding: 20px
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Teamleader and jd--> <!-- session -->
+
+    <div class="container">
+        <fieldset class="inputs">
+            <div class="des"> </div>
+        </fieldset>
+        <fieldset class="actions">
+            <button id="submit">Accept</button>
+            <button id="submit">Reject</button>
+
+        </fieldset>
+        <div id="post-container">
+        </div>
+    </div>
+</body>
+
+
+</html>
+
+
